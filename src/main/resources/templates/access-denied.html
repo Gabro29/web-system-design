@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesso Negato</title>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+
+<body>
+
+<div class="error-card">
+    <div class="error-icon">⛔</div>
+
+    <h2>Accesso Negato</h2>
+
+    <p class="error-message">
+        Non hai i permessi necessari per accedere a questa risorsa<br>
+        o la tua sessione è scaduta.
+    </p>
+
+    <span th:if="${message}" th:text="${message}" class="dynamic-msg"></span>
+
+    <hr class="divider">
+
+    <h4>Seleziona il tuo portale:</h4>
+
+    <div class="links-container">
+        <a href="/customer" class="btn-link">Cliente</a>
+        <a href="/addetto" class="btn-link">Addetto</a>
+        <a href="/gestore" class="btn-link">Gestore</a>
+    </div>
+</div>
+
+</body>
+</html>

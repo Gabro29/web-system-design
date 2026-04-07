@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errore - Kaffe</title>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+
+<body>
+
+<div class="error-card">
+    <div class="error-icon">⚠️</div>
+
+    <h2>Ooops!</h2>
+
+    <p class="error-message">
+        Si è verificato un errore imprevisto<br>
+        oppure la pagina cercata non esiste.
+    </p>
+
+    <div th:if="${message}" class="alert error" style="margin-bottom: 20px;">
+        <span th:text="${message}"></span>
+    </div>
+
+    <hr class="divider">
+
+    <h4>Seleziona il tuo portale:</h4>
+
+    <div class="links-container">
+        <a href="/customer" class="btn-link">Cliente</a>
+        <a href="/addetto" class="btn-link">Addetto</a>
+        <a href="/gestore" class="btn-link">Gestore</a>
+    </div>
+</div>
+
+</body>
+</html>

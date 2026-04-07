@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glc:machine-list xmlns:glc="http://gabro.dev/capp"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://gabro.dev/capp machines-schema.xsd">
+
+    <!-- MACCHINA 1: ATTIVA CON UTENTE CONNESSO -->
+    <glc:machine>
+        <glc:machine-id>FE716XW</glc:machine-id>
+        <glc:request-time>2025-11-04T15:30:00</glc:request-time>
+        <glc:machine-place>Edificio 12 - Piano 1</glc:machine-place>
+        <glc:machine-status>ACTIVE</glc:machine-status>
+        <glc:actual-connected-user-id>mario.rossi@unipa.it</glc:actual-connected-user-id>
+
+        <glc:product-list>
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Espresso</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>342</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Cappuccino</glc:name>
+                <glc:price>1.50</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>198</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Caffè Latte</glc:name>
+                <glc:price>1.50</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>156</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Bevande Calde</glc:category>
+                <glc:name>Cioccolata</glc:name>
+                <glc:price>2.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>89</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Bevande Calde</glc:category>
+                <glc:name>Tè</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>67</glc:times-served>
+            </glc:product>
+        </glc:product-list>
+
+        <glc:supply-list>
+            <glc:supply>
+                <glc:name>Caffè</glc:name>
+                <glc:level-percent>85</glc:level-percent>
+                <glc:capacity>1000</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>20</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Latte</glc:name>
+                <glc:level-percent>45</glc:level-percent>
+                <glc:capacity>2000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>30</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Zucchero</glc:name>
+                <glc:level-percent>20</glc:level-percent>
+                <glc:capacity>200</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>25</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Acqua</glc:name>
+                <glc:level-percent>90</glc:level-percent>
+                <glc:capacity>5000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>15</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Bicchieri</glc:name>
+                <glc:level-percent>60</glc:level-percent>
+                <glc:capacity>150</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>30</glc:warning-threshold>
+            </glc:supply>
+        </glc:supply-list>
+
+        <glc:message-from-server-list>
+            <glc:message>
+                <glc:type>WARNING</glc:type>
+                <glc:text>Zucchero in esaurimento</glc:text>
+                <glc:timestamp>2025-11-04T14:20:00</glc:timestamp>
+            </glc:message>
+
+            <glc:message>
+                <glc:type>INFO</glc:type>
+                <glc:text>Ultima manutenzione: 28/10/2025</glc:text>
+                <glc:timestamp>2025-10-28T09:00:00</glc:timestamp>
+            </glc:message>
+        </glc:message-from-server-list>
+    </glc:machine>
+
+    <!-- MACCHINA 2: IN MANUTENZIONE -->
+    <glc:machine>
+        <glc:machine-id>DR529QP</glc:machine-id>
+        <glc:request-time>2025-11-04T15:30:00</glc:request-time>
+        <glc:machine-place>Edificio 8 - Piano Terra</glc:machine-place>
+        <glc:machine-status>MAINTENANCE</glc:machine-status>
+
+        <glc:product-list>
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Espresso</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>false</glc:available>
+                <glc:times-served>289</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Cappuccino</glc:name>
+                <glc:price>1.50</glc:price>
+                <glc:available>false</glc:available>
+                <glc:times-served>145</glc:times-served>
+            </glc:product>
+        </glc:product-list>
+
+        <glc:supply-list>
+            <glc:supply>
+                <glc:name>Caffè</glc:name>
+                <glc:level-percent>15</glc:level-percent>
+                <glc:capacity>1000</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>20</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Latte</glc:name>
+                <glc:level-percent>10</glc:level-percent>
+                <glc:capacity>2000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>30</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Zucchero</glc:name>
+                <glc:level-percent>5</glc:level-percent>
+                <glc:capacity>200</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>25</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Acqua</glc:name>
+                <glc:level-percent>25</glc:level-percent>
+                <glc:capacity>5000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>15</glc:warning-threshold>
+            </glc:supply>
+        </glc:supply-list>
+
+        <glc:message-from-server-list>
+            <glc:message>
+                <glc:type>ERROR</glc:type>
+                <glc:text>Forniture critiche: richiedere rifornimento urgente</glc:text>
+                <glc:timestamp>2025-11-04T10:15:00</glc:timestamp>
+            </glc:message>
+
+            <glc:message>
+                <glc:type>WARNING</glc:type>
+                <glc:text>Macchina in modalità manutenzione</glc:text>
+                <glc:timestamp>2025-11-04T10:00:00</glc:timestamp>
+            </glc:message>
+        </glc:message-from-server-list>
+    </glc:machine>
+
+    <!-- MACCHINA 3: OFFLINE -->
+    <glc:machine>
+        <glc:machine-id>AB123CD</glc:machine-id>
+        <glc:request-time>2025-11-04T15:30:00</glc:request-time>
+        <glc:machine-place>Edificio 19 - Piano 2</glc:machine-place>
+        <glc:machine-status>OFFLINE</glc:machine-status>
+
+        <glc:product-list>
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Espresso</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>false</glc:available>
+                <glc:times-served>0</glc:times-served>
+            </glc:product>
+        </glc:product-list>
+
+        <glc:supply-list>
+            <glc:supply>
+                <glc:name>Caffè</glc:name>
+                <glc:level-percent>0</glc:level-percent>
+                <glc:capacity>1000</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>20</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Acqua</glc:name>
+                <glc:level-percent>0</glc:level-percent>
+                <glc:capacity>5000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>15</glc:warning-threshold>
+            </glc:supply>
+        </glc:supply-list>
+
+        <glc:message-from-server-list>
+            <glc:message>
+                <glc:type>ERROR</glc:type>
+                <glc:text>Macchina offline: nessuna connessione al server</glc:text>
+                <glc:timestamp>2025-11-03T18:00:00</glc:timestamp>
+            </glc:message>
+        </glc:message-from-server-list>
+    </glc:machine>
+
+    <!-- MACCHINA 4: ERRORE CON PRODOTTO NON DISPONIBILE -->
+    <glc:machine>
+        <glc:machine-id>GH890LM</glc:machine-id>
+        <glc:request-time>2025-11-04T15:30:00</glc:request-time>
+        <glc:machine-place>Edificio 6 - Piano 3</glc:machine-place>
+        <glc:machine-status>ERROR</glc:machine-status>
+        <glc:actual-connected-user-id>luigi.verdi@unipa.it</glc:actual-connected-user-id>
+
+        <glc:product-list>
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Espresso</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>521</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Cappuccino</glc:name>
+                <glc:price>1.50</glc:price>
+                <glc:available>false</glc:available>
+                <glc:times-served>234</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Bevande Calde</glc:category>
+                <glc:name>Tè</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>98</glc:times-served>
+            </glc:product>
+        </glc:product-list>
+
+        <glc:supply-list>
+            <glc:supply>
+                <glc:name>Caffè</glc:name>
+                <glc:level-percent>65</glc:level-percent>
+                <glc:capacity>1000</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>20</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Latte</glc:name>
+                <glc:level-percent>5</glc:level-percent>
+                <glc:capacity>2000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>30</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Acqua</glc:name>
+                <glc:level-percent>80</glc:level-percent>
+                <glc:capacity>5000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>15</glc:warning-threshold>
+            </glc:supply>
+        </glc:supply-list>
+
+        <glc:message-from-server-list>
+            <glc:message>
+                <glc:type>ERROR</glc:type>
+                <glc:text>Latte terminato: cappuccino non disponibile</glc:text>
+                <glc:timestamp>2025-11-04T12:45:00</glc:timestamp>
+            </glc:message>
+
+            <glc:message>
+                <glc:type>WARNING</glc:type>
+                <glc:text>Richiedere rifornimento latte</glc:text>
+                <glc:timestamp>2025-11-04T12:30:00</glc:timestamp>
+            </glc:message>
+        </glc:message-from-server-list>
+    </glc:machine>
+
+
+
+    <!-- MACCHINA 5: NESSUNA FORNITURA CRITICA -->
+    <glc:machine>
+        <glc:machine-id>ZX450NP</glc:machine-id>
+        <glc:request-time>2025-11-04T15:30:00</glc:request-time>
+        <glc:machine-place>Edificio 12 - Piano 1</glc:machine-place>
+        <glc:machine-status>ACTIVE</glc:machine-status>
+
+        <glc:product-list>
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Espresso</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>432</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Caffè</glc:category>
+                <glc:name>Cappuccino</glc:name>
+                <glc:price>1.50</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>310</glc:times-served>
+            </glc:product>
+
+            <glc:product>
+                <glc:category>Bevande Calde</glc:category>
+                <glc:name>Tè</glc:name>
+                <glc:price>1.00</glc:price>
+                <glc:available>true</glc:available>
+                <glc:times-served>145</glc:times-served>
+            </glc:product>
+        </glc:product-list>
+
+        <glc:supply-list>
+            <glc:supply>
+                <glc:name>Caffè</glc:name>
+                <glc:level-percent>78</glc:level-percent>
+                <glc:capacity>1000</glc:capacity>
+                <glc:unit>G</glc:unit>
+                <glc:warning-threshold>20</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Latte</glc:name>
+                <glc:level-percent>55</glc:level-percent>
+                <glc:capacity>2000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>30</glc:warning-threshold>
+            </glc:supply>
+
+            <glc:supply>
+                <glc:name>Acqua</glc:name>
+                <glc:level-percent>92</glc:level-percent>
+                <glc:capacity>5000</glc:capacity>
+                <glc:unit>ML</glc:unit>
+                <glc:warning-threshold>15</glc:warning-threshold>
+            </glc:supply>
+        </glc:supply-list>
+
+        <glc:message-from-server-list>
+            <glc:message>
+                <glc:type>INFO</glc:type>
+                <glc:text>Ottimi guadagni</glc:text>
+                <glc:timestamp>2025-11-04T12:45:00</glc:timestamp>
+            </glc:message>
+        </glc:message-from-server-list>
+    </glc:machine>
+
+</glc:machine-list>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coffee cApp UNIPA - Area Gestore">
+    <title>Coffee cApp UNIPA - Gestore</title>
+
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/gestore.css">
+
+
+    <link rel="icon" type="image/png" href="/data/images/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/data/images/icons/favicon.svg" />
+</head>
+
+<body>
+
+
+<!-- LOGIN -->
+<div id="login" class="page active">
+    <h2>Login</h2>
+
+    <form id="login-form" onsubmit="handleLogin(); return false;">
+        <label for="login-email">Email</label>
+        <input
+                type="email"
+                id="login-email"
+                name="email"
+                placeholder="mario.rossi@domain.it"
+                title="Inserisci un indirizzo email valido"
+                required
+        />
+
+        <label for="login-password">Password</label>
+        <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="Password"
+                required
+        />
+
+        <button type="submit">Accedi</button>
+    </form>
+</div>
+
+
+<!-- HOME -->
+<div id="home" class="page">
+    <h2>Home</h2>
+    <h4>Boungiornissimo <span id="username"></span>!</h4>
+
+    <div class="menu-actions">
+        <button type="button" onclick="showManageMachines()">Gestione Distributori</button>
+        <button type="button" onclick="showManageAddetti()">Gestione Addetti</button>
+        <button type="button" onclick="showOverviewPage()">Analisi Distributori</button>
+        <button class="btn-cancel" type="button" onclick="handleLogout()">Logout</button>
+    </div>
+</div>
+
+
+<!-- GESTIONE DISTRIBUTORI -->
+<div id="manage-machines" class="page">
+    <h2>Gestione Distributori</h2>
+
+    <div class="form-section">
+        <div class="label-with-hint">
+            <label for="machine-action" class="label-action">Azione</label>
+            <span class="label-hint">(clicca card per confermare)</span>
+        </div>
+        <select id="machine-action" class="select-action">
+            <option value="enable">Attiva Distributore</option>
+            <option value="disable">Disattiva Distributore</option>
+            <option value="remove">Rimuovi Distributore</option>
+        </select>
+
+        <div id="machines-grid-manage" class="machines-grid"></div>
+
+        <button type="button" id="add-new-machine-btn">Aggiungi Nuovo Distributore</button>
+    </div>
+
+    <button class="btn-cancel" type="button" onclick="showPage('home')">Torna alla Home</button>
+</div>
+
+
+<!-- GESTIONE ADDETTI -->
+<div id="manage-addetti" class="page">
+    <h2>Gestione Addetti</h2>
+
+    <div class="form-section">
+
+        <label for="search-addetto-id">Cerca per Email</label>
+        <input
+                type="text"
+                id="search-addetto-id"
+                placeholder="Digita una Email per filtrare..."
+        />
+
+        <div id="addetti-grid" class="addetti-grid"></div>
+
+        <button type="button" id="add-new-addetto-btn">Aggiungi Nuovo Addetto</button>
+    </div>
+
+    <button class="btn-cancel" type="button" onclick="showPage('home')">Torna alla Home</button>
+</div>
+
+
+<!-- OVERVIEW -->
+<div id="overview" class="page">
+    <h2>Analisi Distributori</h2>
+
+    <div class="filters-section">
+
+        <div class="filters-header">
+
+            <div class="label-with-hint">
+                <h4>Ricerca e Filtri</h4>
+                <span class="label-hint">(clicca card per dettagli)</span>
+            </div>
+
+            <div class="filter-checks-inline">
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="filter-problems-only">
+                    ⚠️ Problemi
+                </label>
+
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="filter-low-supplies">
+                    📦 Forniture
+                </label>
+            </div>
+
+        </div>
+
+        <label for="search-machine-id">Cerca per ID</label>
+        <input
+                type="text"
+                id="search-machine-id"
+                placeholder="Es. FE716XW"
+        >
+
+        <label for="filter-status">Stato macchina</label>
+        <select id="filter-status">
+            <option value="">Tutti gli stati</option>
+            <option value="ACTIVE">Attive</option>
+            <option value="MAINTENANCE">In manutenzione</option>
+            <option value="ERROR">In errore</option>
+            <option value="OFFLINE">Offline</option>
+        </select>
+
+    </div>
+
+    <div class="results-info">
+        <span id="results-count"></span>
+    </div>
+
+    <div id="machines-grid-overview" class="machines-grid"></div>
+
+    <button class="btn-cancel" type="button" onclick="showHomePage()">Torna alla Home</button>
+</div>
+
+
+<!-- POPUP DETTAGLIO MACCHINA -->
+<div id="popup-overlay" class="popup-overlay hidden">
+    <div id="popup-overlay-container" class="popup-card">
+        <h3>Macchina <span id="detail-machine-id"></span></h3>
+
+        <p>Stato: <span class="status-badge active" id="detail-machine-state"></span></p>
+
+        <div class="supplies-section">
+            <h4>Forniture</h4>
+            <div id="supplies-container"></div>
+        </div>
+
+        <div class="alerts-section">
+            <h4>Alert</h4>
+            <div id="alerts-container"></div>
+        </div>
+
+        <button type="button" style="margin-top: 15px;">Chiudi</button>
+    </div>
+</div>
+
+
+<!-- POPUP CONFERMA AZIONE DISTRIBUTORE -->
+<div id="action-confirm-popup-macchinetta" class="popup-overlay hidden">
+
+    <div id="action-confirm-popup-container-macchinetta" class="popup-card">
+        <h3 id="action-popup-title">Conferma Azione</h3>
+
+        <p id="action-popup-message-macchinetta">
+            Conferma <span id="action-type-text-macchinetta"></span> distributore
+            <strong id="action-machine-id-text"></strong>
+        </p>
+
+        <form id="add-machine-form" onsubmit="addMachine(); return false;">
+            <div id="add-machine-fields" class="hidden">
+                <label for="new-machine-id">ID Macchina *</label>
+                <input
+                        type="text"
+                        id="new-machine-id"
+                        name="machineId"
+                        placeholder="Formato: FE716XW"
+                        pattern="[A-Z]{2}[0-9]{3}[A-Z]{2}"
+                        title="Formato: 2 lettere maiuscole, 3 numeri, 2 lettere maiuscole"
+                        maxlength="7"
+                        oninput="this.value = this.value.toUpperCase()"
+                        required
+                />
+
+                <label for="new-machine-place">Posizione *</label>
+                <input
+                        type="text"
+                        id="new-machine-place"
+                        name="machinePlace"
+                        placeholder="Es: Edificio 12 - Piano 1"
+                        required
+                />
+            </div>
+
+            <div class="popup-actions" style="margin-top: 20px;">
+                <button type="submit" id="macchinetta-confirm-action-btn" class="btn-confirm">Conferma</button>
+                <button type="button" id="macchinetta-cancel-action-btn" class="btn-cancel">Annulla</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- POPUP CONFERMA AZIONE ADDETTO -->
+<div id="action-confirm-popup-addetto" class="popup-overlay hidden">
+
+    <div id="action-confirm-popup-container-addetto" class="popup-card">
+        <h3 id="action-popup-title-addetto">Conferma Azione</h3>
+
+        <p id="action-popup-message-addetto">
+            Conferma <span id="action-type-text-addetto"></span> addetto
+            <strong id="action-addetto-id-text"></strong>
+        </p>
+
+        <form id="add-addetto-form" onsubmit="addAddetto(); return false;">
+            <div id="add-addetto-fields" class="hidden">
+                <label for="new-addetto-id">Email *</label>
+                <input
+                        type="email"
+                        id="new-addetto-id"
+                        name="addettoEmail"
+                        placeholder="mario.rossi@domain.com"
+                        required
+                />
+
+                <label for="new-addetto-password">Password *</label>
+                <input
+                        type="text"
+                        id="new-addetto-password"
+                        name="addettoPassword"
+                        placeholder="password"
+                        required
+                />
+            </div>
+
+            <div class="popup-actions" style="margin-top: 20px;">
+                <button type="submit" id="addetto-confirm-action-btn" class="btn-confirm">Conferma</button>
+                <button type="button" id="addetto-cancel-action-btn" class="btn-cancel">Annulla</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="/js/global.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/gestore.js"></script>
+
+</body>
+
+</html>

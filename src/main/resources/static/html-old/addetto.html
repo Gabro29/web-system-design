@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coffee cApp UNIPA - Area Addetto">
+    <title>Coffee cApp UNIPA - Addetto</title>
+
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/addetto.css">
+
+    <link rel="icon" type="image/png" href="/data/images/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/data/images/icons/favicon.svg" />
+
+</head>
+<body>
+
+
+<!-- LOGIN -->
+<div id="login" class="page active">
+    <h2>Login</h2>
+
+    <form id="login-form" onsubmit="handleLogin(); return false;">
+        <label for="login-email">Email</label>
+        <input
+                type="email"
+                id="login-email"
+                name="email"
+                placeholder="mario.rossi@domain.it"
+                required
+        />
+
+        <label for="login-password">Password</label>
+        <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="Password"
+                required
+        />
+
+        <button type="submit">Accedi</button>
+    </form>
+</div>
+
+
+<!-- HOME -->
+<div id="home" class="page">
+    <h2>Home</h2>
+
+    <h4>Buongiornissimo <span id="username"></span>, a lavoro!</h4>
+
+    <label for="machine-id">ID Macchina</label>
+    <input
+            type="text"
+            id="machine-id"
+            name="machineId"
+            placeholder="Formato: FE716XW"
+            maxlength="7"
+            oninput="this.value = this.value.toUpperCase()"
+    />
+
+    <button type="button" id="btn-grab-status" onclick="showStatusSelectedMachine()">Acquisisci stato</button>
+
+    <!-- STATO MACCHINA -->
+    <div id="machine-status" class="machine-status-card hidden">
+        <h3>Macchina <span id="current-machine-id">-</span></h3>
+
+        <p>Stato: <span class="status-badge active" id="machine-state"></span></p>
+
+        <!-- FORNITURE -->
+        <div class="supplies-section">
+            <h4>Livelli Forniture</h4>
+                <div id="supplies-container"></div>
+        </div>
+
+        <!-- ALERT GUASTI -->
+        <div class="alerts-section">
+            <h4>Alert</h4>
+            <div id="alerts-container">
+            </div>
+        </div>
+    </div>
+
+    <button type="button" onclick="handleLogout()" style="background: gray; margin-top: 20px;">Logout</button>
+</div>
+
+<script src="/js/global.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/addetto.js"></script>
+
+</body>
+</html>

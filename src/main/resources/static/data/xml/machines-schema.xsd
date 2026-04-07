@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://gabro.dev/capp"
+           xmlns:glc="http://gabro.dev/capp"
+           elementFormDefault="qualified">
+
+    <xs:element name="machine-list" type="glc:MachineListType"/>
+
+    <xs:complexType name="MachineListType">
+        <xs:sequence>
+            <xs:element name="machine" type="glc:MachineType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MachineType">
+        <xs:sequence>
+            <xs:element name="machine-id" type="glc:MachineIDType"/>
+            <xs:element name="request-time" type="xs:dateTime"/>
+            <xs:element name="machine-place" type="xs:string"/>
+            <xs:element name="machine-status" type="glc:MachineStatusType"/>
+            <xs:element name="actual-connected-user-id" type="glc:EmailType" minOccurs="0"/>
+            <xs:element name="product-list" type="glc:ProductListType"/>
+            <xs:element name="supply-list" type="glc:SupplyListType"/>
+            <xs:element name="message-from-server-list" type="glc:MessageListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProductListType">
+        <xs:sequence>
+            <xs:element name="product" type="glc:ProductType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProductType">
+        <xs:sequence>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="glc:PriceType"/>
+            <xs:element name="available" type="xs:boolean"/>
+            <xs:element name="times-served" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SupplyListType">
+        <xs:sequence>
+            <xs:element name="supply" type="glc:SupplyType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SupplyType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="level-percent" type="glc:PercentType"/>
+            <xs:element name="capacity" type="glc:CapacityType"/>
+            <xs:element name="unit" type="glc:UnitType"/>
+            <xs:element name="warning-threshold" type="glc:PercentType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MessageListType">
+        <xs:sequence>
+            <xs:element name="message" type="glc:MessageType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MessageType">
+        <xs:sequence>
+            <xs:element name="type" type="glc:MessageTypeEnum"/>
+            <xs:element name="text" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="MachineIDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}[0-9]{3}[A-Z]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="EmailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MachineStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="MAINTENANCE"/>
+            <xs:enumeration value="ERROR"/>
+            <xs:enumeration value="OFFLINE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PriceType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.35"/>
+            <xs:maxInclusive value="5.00"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PercentType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CapacityType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="10000"/>  <!-- 10L max or 10Kg max -->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="UnitType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ML"/>
+            <xs:enumeration value="G"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MessageTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="INFO"/>
+            <xs:enumeration value="WARNING"/>
+            <xs:enumeration value="ERROR"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,273 @@
+
+
+.machines-grid,
+.addetti-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.machine-card,
+.addetto-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.machine-card:hover,
+.addetto-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+.machine-card h4,
+.addetto-card h4 {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+
+.addetto-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#add-new-machine-btn {
+    margin-top: 20px;
+}
+
+
+.remove-addetto-btn {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: 0.2s;
+}
+
+.remove-addetto-btn:hover {
+    background: #e60000;
+}
+
+#add-new-addetto-btn {
+    margin-top: 20px;
+}
+
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.popup-overlay.hidden {
+    display: none;
+}
+
+.popup-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 12px;
+    width: 85%;
+    max-width: 240px;
+}
+
+
+.select-action {
+    width: 100%;
+    font-family: "Lucida Console", monospace;
+    font-size: 15px;
+    color: #2c1a0e;
+    background-color: #fff;
+    border: 1px solid #b8a89f;
+    border-radius: 4px;
+    padding: 5px 7px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.select-action:hover {
+    border-color: #6B4423;
+}
+
+.select-action:focus {
+    outline: none;
+    border-color: #6B4423;
+    box-shadow: 0 0 4px rgba(107, 68, 35, 0.4);
+}
+
+
+.filters-section {
+    background: #fff;
+    border: 1px solid #d4c6bc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.filters-section h4 {
+    margin: 0;
+    color: #6B4423;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+
+.filter-checks-inline {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    font-size: 12px;
+    white-space: nowrap;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+.filter-checkbox:hover {
+    background: #fff;
+    border-color: #6B4423;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #6B4423;
+    flex-shrink: 0;
+}
+
+.filters-section label:not(.filter-checkbox) {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin: 8px 0 4px 0;
+}
+
+.filters-section input[type="text"],
+.filters-section select {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-family: "Lucida Console", monospace;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.filters-section input:focus,
+.filters-section select:focus {
+    border-color: #6B4423;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(107, 68, 35, 0.1);
+}
+
+.filters-section input::placeholder {
+    color: #999;
+    font-size: 13px;
+}
+
+.filters-section select {
+    cursor: pointer;
+}
+
+
+.results-info {
+    background: linear-gradient(135deg, #6B4423, #8B5E34);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+#results-count {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+
+.label-with-hint {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+
+.label-action {
+    display: inline;
+    font-family: "Lucida Console", monospace;
+    font-weight: bold;
+    font-size: 17px;
+    color: #2c1a0e;
+    margin: 0;
+}
+
+
+.label-hint {
+    font-family: "Lucida Console", monospace;
+    font-weight: normal;
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+

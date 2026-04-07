@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coffee cApp UNIPA - Distributore">
+    <title>Coffee cApp UNIPA - Distributore</title>
+
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/macchinetta.css">
+
+
+    <link rel="icon" type="image/png" href="/data/images/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/data/images/icons/favicon.svg" />
+</head>
+
+<body>
+
+<!-- SCREENSAVER -->
+<div id="screensaver" class="page">
+    <h2>Coffee cApp UNIPA</h2>
+
+    <!-- STATUS BOX -->
+    <div class="status-box">
+        <span class="status-indicator connected"></span>
+        <span class="status-text">Macchina Libera</span>
+    </div>
+
+    <p>Buongiornissimo, Kaffè?!</p>
+    <p>ID Macchina: <strong id="screensaver-machine-id">--</strong></p>
+    <p>Orario: <strong id="screensaver-time">00:00</strong></p>
+
+
+</div>
+
+<!-- ACTIVE PAGE -->
+<div id="active" class="page active">
+
+    <h2>Coffee cApp UNIPA</h2>
+
+    <!-- PROGRESS BAR -->
+    <div id="progress-section" class="hidden">
+        <p id="progress-text">Preparazione in corso...</p>
+        <div class="progress-bar-machine">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- STATUS BOX -->
+    <div class="status-box">
+        <span class="status-indicator busy"></span>
+        <span class="status-text">Macchina Occupata</span>
+    </div>
+
+    <!-- HEADER -->
+    <div class="machine-header">
+        <div class="header-item">
+            <span class="header-label">ID Macchina</span>
+            <span class="header-value" id="machine-id">--</span>
+        </div>
+        <div class="header-item">
+            <span class="header-label">Orario</span>
+            <span class="header-value" id="time">00:00</span>
+        </div>
+        <div class="header-item">
+            <span class="header-label">Utente</span>
+            <span class="header-value" id="user-name"></span>
+        </div>
+        <div class="header-item">
+            <span class="header-label">Credito</span>
+            <span class="header-value">€<span id="user-credit"></span></span>
+        </div>
+    </div>
+
+    <!-- SUGAR SELECTION -->
+    <div class="sugar-section">
+        <label>Zucchero</label>
+        <div class="sugar-buttons">
+            <button type="button" class="sugar-btn" data-level="0">0</button>
+            <button type="button" class="sugar-btn active" data-level="1">1</button>
+            <button type="button" class="sugar-btn" data-level="2">2</button>
+            <button type="button" class="sugar-btn" data-level="3">3</button>
+        </div>
+    </div>
+
+    <!-- PRODUCTS LIST -->
+    <div class="products-list">
+        <h3>Seleziona Prodotti</h3>
+
+        <div class="products-scroll-container">
+            <div class="products-grid">
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/espresso.png" alt="Espresso cup" class="product-image">
+                    </div>
+                    <span class="product-name">Espresso</span>
+                    <span class="product-price">€1.00</span>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/cappuccino.png" alt="Cappuccino cup" class="product-image">
+                    </div>
+                    <span class="product-name">Cappuccino</span>
+                    <span class="product-price">€1.50</span>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/milk.png" alt="Milk cup" class="product-image">
+                    </div>
+                    <span class="product-name">Latte</span>
+                    <span class="product-price">€1.50</span>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/chocolate.png" alt="Chocolate cup" class="product-image">
+                    </div>
+                    <span class="product-name">Cioccolata</span>
+                    <span class="product-price">€2.00</span>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/tea.png" alt="Tea cup" class="product-image">
+                    </div>
+                    <span class="product-name">Tè</span>
+                    <span class="product-price">€1.00</span>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="/data/images/products/water.png" alt="Water glass" class="product-image">
+                    </div>
+                    <span class="product-name">Acqua</span>
+                    <span class="product-price">€0.50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- POPUP CONFERMA PRODOTTO -->
+<div id="confirm-popup-overlay" class="popup-overlay">
+    <div class="popup-box">
+        <h3 class="popup-title">Conferma Ordine</h3>
+
+        <div class="popup-details">
+            <div class="popup-detail-row">
+                <span class="popup-detail-label">Bevanda</span>
+                <span class="popup-detail-value" id="confirm-drink-name"></span>
+            </div>
+            <div class="popup-detail-row">
+                <span class="popup-detail-label">Livello zucchero</span>
+                <span class="popup-detail-value" id="confirm-sugar-level"></span>
+            </div>
+            <div class="popup-detail-row">
+                <span class="popup-detail-label">Prezzo</span>
+                <span class="popup-detail-value">€<span id="confirm-price"></span></span>
+            </div>
+        </div>
+
+        <div class="popup-actions">
+            <button type="button" class="popup-btn popup-btn-cancel">Annulla</button>
+            <button type="button" class="popup-btn popup-btn-confirm">Conferma</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/global.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/macchinetta.js"></script>
+
+
+</body>
+
+</html>
