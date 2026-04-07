@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <Resource
+            name="jdbc/kaffe"
+            auth="Container"
+            type="javax.sql.DataSource"
+
+            driverClassName="com.mysql.cj.jdbc.Driver"
+
+            url="jdbc:mysql://localhost:3306/kaffeknd_jakarta?serverTimezone=Europe/Rome&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"
+
+            username="kaffe"
+            password="kaffe"
+
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+            maxTotal="50"
+            maxIdle="15"
+            minIdle="2"
+            maxWaitMillis="10000"
+
+            testOnBorrow="true"
+            validationQuery="SELECT 1"
+            validationQueryTimeout="3"
+
+            removeAbandonedOnBorrow="true"
+            removeAbandonedTimeout="120"
+    />
+
+</Context>
