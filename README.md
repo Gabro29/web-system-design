@@ -1,6 +1,6 @@
 # ☕ Coffee cApp — Vending Machine Management System
 
-A distributed software system designed to manage a network of **smart vending machines**, including **backend services**, **data persistence**, and a dedicated **real-time monitoring service**.
+A distributed application designed to manage a network of **smart vending machines**, including user interaction, vending operations, and machine monitoring.
 
 This project was developed as part of the **Web System and Design Architecture** assignments.
 
@@ -8,22 +8,54 @@ This project was developed as part of the **Web System and Design Architecture**
 
 ## 📌 Project Overview
 
-The platform is composed of **two main applications**:
+The system is composed of **two separate applications** contained in the same repository:
 
-### 1. Main Application — Spring Boot
-Handles the core business logic of the vending ecosystem, including:
+### 1. Spring Application — Main System
+Built with **Spring Boot**, this is the main application of the project.
+
+It handles:
 
 - user management
-- customer credit handling
+- authentication and authorization
+- customer credit
 - vending operations
-- machine interaction workflows
+- machine interaction
+- administrative functionalities
 
-### 2. Monitoring Service — JakartaEE
-Responsible for monitoring and supervising the vending infrastructure, including:
+### 2. JakartaEE Application — Monitoring Service
+Built with **JakartaEE**, this service is responsible for monitoring the vending infrastructure.
 
-- real-time machine status tracking
-- machine location management
-- fault detection and operational supervision
+It handles:
+
+- machine heartbeat tracking
+- machine operational status
+- machine location and state monitoring
+- fault detection
+
+---
+
+## 📁 Repository Structure
+
+```text
+coffee-capp/
+│
+├── spring-app/              # Main application (Spring Boot)
+│   ├── src/
+│   ├── pom.xml
+│   └── ...
+│
+├── jakarta-monitoring/      # Monitoring service (JakartaEE)
+│   ├── src/
+│   ├── pom.xml
+│   └── ...
+│
+├── database/
+│   ├── kaffeknd_spring.sql
+│   └── kaffeknd_jakarta.sql
+│
+├── README.md
+└── .gitignore
+```
 
 ---
 
@@ -107,9 +139,9 @@ The system manager has administrative control over the vending network.
 
 ## 🔐 Security
 
-The **main application** has been secured using **Spring Security**.
+The **Spring Boot application** has been secured using **Spring Security**.
 
-Authentication and authorization have been implemented for the following user roles:
+Authentication and authorization have been implemented for the following roles:
 
 - `CUSTOMER`
 - `VENDING_MACHINE`
@@ -117,13 +149,13 @@ Authentication and authorization have been implemented for the following user ro
 - `SYSTEM_MANAGER`
 
 ### Security Features
-- **Login support** for all four user roles
-- **Role-based authorization**
-- **Protected controllers** based on user permissions
-- **Security Filter Chain** configuration for route access control
+- Login support for all four user roles
+- Role-based authorization
+- Protected controllers based on permissions
+- Security Filter Chain configuration for route protection
 
 ### Access Control
-Each user can only access the controllers and functionalities related to their role.
+Each user can only access the endpoints and functionalities related to their role.
 
 For example:
 
@@ -132,24 +164,24 @@ For example:
 - **Maintenance workers** can access maintenance and machine status operations
 - **System managers** can access administrative and infrastructure management features
 
-> The **monitoring service** remains accessible without authentication, as required by the assignment specification.
+> The **JakartaEE monitoring service** remains accessible without authentication.
 
 ---
 
 ## 🏗️ System Architecture & Persistence
 
-The system follows a **distributed architecture** with separation between operational logic and infrastructure monitoring.
+The system follows a **distributed architecture** with a separation between the main operational logic and the monitoring service.
 
-### Main Backend
+### Spring Boot Backend
 Uses a **relational database** to store:
 
 - user profiles
 - customer credit
 - vending machine data
-- operational business data
+- business logic data
 
-### Monitoring Backend
-Uses an **independent database** (relational or NoSQL) to store:
+### JakartaEE Monitoring Backend
+Uses a separate database to store:
 
 - vending machine coordinates
 - machine states
@@ -175,8 +207,8 @@ The monitoring service automatically marks a machine as `Broken` if **no heartbe
 - **Spring Security**
 - **Maven**
 
-### Persistence
-- **MySQL / PostgreSQL** (main backend)
+### Database
+- **MySQL**
 
 ### Data Exchange
 - **JSON**
@@ -184,7 +216,7 @@ The monitoring service automatically marks a machine as `Broken` if **no heartbe
 - **XSD Schemas**
 
 ### Frontend
-- **Single Page Applications (SPA)** for all user-facing interfaces
+- **Single Page Applications (SPA)** for the user interfaces
 
 ---
 
@@ -196,44 +228,90 @@ Before running the project, make sure you have installed:
 
 - **Java 17** or higher
 - **Maven**
+- **MySQL**
 - A **JakartaEE-compatible application server**
-- A SQL database such as **MySQL**
 
 ---
 
-## ▶️ Running the Main Application (Spring Boot)
+## 🗄️ Database Configuration
 
-1. Navigate to the `main-app` directory:
+### MySQL Credentials
+- **Username:** `kaffe`
+- **Password:** `kaffe`
 
-```bash
-cd main-app
+### SQL Files
+The SQL files used to initialize the databases are located in:
+
+```text
+database/kaffeknd_spring.sql
+database/kaffeknd_jakarta.sql
 ```
 
-2. Configure your database connection in:
+---
+
+## ▶️ Running the Spring Boot Application
+
+### Default Port
+```text
+8081
+```
+
+### Steps
+
+1. Navigate to the Spring Boot project folder:
+
+```bash
+cd spring-app
+```
+
+2. Configure your database connection inside:
 
 ```properties
 src/main/resources/application.properties
 ```
 
-3. Run the application:
+3. Import and run the SQL file for the Spring database:
+
+```text
+database/kaffeknd_spring.sql
+```
+
+4. Run the application:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
----
-
-## ▶️ Running the Monitoring Service (JakartaEE)
-
-1. Navigate to the `monitoring-service` directory:
+or
 
 ```bash
-cd monitoring-service
+mvn spring-boot:run
 ```
 
-2. Build and deploy the generated `.war` file to your JakartaEE application server.
+---
 
-3. Ensure that the **monitoring database** is initialized separately from the main backend database.
+## ▶️ Running the JakartaEE Monitoring Service
+
+### Default Port
+```text
+8080
+```
+
+### Steps
+
+1. Navigate to the JakartaEE project folder:
+
+```bash
+cd jakarta-monitoring
+```
+
+2. Import and run the SQL file for the monitoring database:
+
+```text
+database/kaffeknd_jakarta.sql
+```
+
+3. Build and deploy the generated `.war` file to your JakartaEE application server.
 
 ---
 
@@ -242,6 +320,7 @@ cd monitoring-service
 To ensure structured and consistent communication, the project includes dedicated **XML Schemas (XSD)**.
 
 ### Included XML Components
+
 - **Machine Status XSD**
   - Defines the structure of machine state and monitoring data
 
